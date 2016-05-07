@@ -2,4 +2,4 @@ language: ruby
 cache: bundler
 rvm:
   - 2.2
-script: bundler exec rspec spec
+script: bundler exec rake test 
