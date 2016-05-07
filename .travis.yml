@@ -1,5 +1,8 @@
 language: ruby
-cache: bundler
+cache:
+  bundler: true
+  directories:
+  - $HOME/.phantomjs
 rvm:
   - 2.2
 script: bundler exec rake test
