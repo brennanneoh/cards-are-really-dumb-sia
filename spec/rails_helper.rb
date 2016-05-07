@@ -55,6 +55,9 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include FactoryGirl::Syntax::Methods
+  config.color = true
+  config.tty = true
+  config.formatter = :documentation
 end
 
 Shoulda::Matchers.configure do |config|
