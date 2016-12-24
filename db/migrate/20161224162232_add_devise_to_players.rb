@@ -2,7 +2,8 @@ class AddDeviseToPlayers < ActiveRecord::Migration[5.0]
   def self.up
     change_table :players do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.change :email, :string, null: false, default: ""
+      t.remove :password_digest
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
