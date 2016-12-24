@@ -1,4 +1,4 @@
-//= require jquery
+//= require jquery2
 //= require tether
 //= require bootstrap
 //= require rails.validations
