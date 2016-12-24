@@ -1,8 +1,4 @@
 language: ruby
-cache:
-  bundler: true
-  directories:
-  - $HOME/.phantomjs
-rvm:
-  - 2.3.1
+cache: bundler
+before_install: bundle config github.https true
 script: bundler exec rspec
