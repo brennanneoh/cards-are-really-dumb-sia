@@ -1,6 +1,7 @@
 %h1 Signup
 
 = simple_form_for @player, validate: true do |f|
+  = f.error_notification
   = f.input :name
   = f.input :email, placeholder: "user@domain.com"
   = f.input :password
