@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get '/signup', to: 'player#signup'
+  resources :players
+  get 'signup', to: 'players#create'
 end
