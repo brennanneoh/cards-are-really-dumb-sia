@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'bootstrap-sass', '~> 3.3.7'
-gem 'sqlite3'
+gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'sass-rails', '~> 5.0'
+gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
@@ -12,6 +12,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'haml-rails'
+gem 'simple_form'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 
 group :development, :test do
   gem 'byebug'
