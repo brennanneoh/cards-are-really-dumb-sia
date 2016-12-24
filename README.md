@@ -3,9 +3,9 @@
 Yet another online Cards Against Humanity clone. [![Build Status](https://travis-ci.org/brennanneoh/cards-are-really-dumb-sia.svg?branch=master)](https://travis-ci.org/brennanneoh/cards-are-really-dumb-sia)
 ## Requirements
 
-* Ruby 2.3.0-p247
-* Bundler 1.11.2
-* Rails 4.2.6
+* Ruby 2.3.3
+* Bundler 1.13.6
+* Rails 5.0.1
 
 ## Setup
 
