@@ -255,7 +255,7 @@ DEPENDENCIES
   pg
   rails
   rails-assets-tether (>= 1.1.0)!
-  rspec-rails (~> 3.0)
+  rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda-matchers (~> 3.1)
