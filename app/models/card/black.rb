@@ -8,4 +8,11 @@ class Card::Black < Card
 
   validates :type, inclusion: { in: [ TYPES[:black] ] }
   validates :text_type, inclusion: { in: TEXT_TYPES.values }
+  validates :blanks, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, if: :is_fill_in_the_blanks?
+
+  private
+
+  def is_fill_in_the_blanks?
+    text_type == TEXT_TYPES[:fill_in_the_blanks]
+  end
 end
