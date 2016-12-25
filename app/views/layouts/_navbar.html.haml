@@ -1,0 +1,9 @@
+= navbar bg: :inverse, color_scheme: :dark, brand: 'C.A.R.D.S' do
+  = navbar_group do
+    = navbar_item 'Home', root_path
+  = navbar_group class: 'float-xs-right' do
+    - if current_player
+      = navbar_item 'Logout', destroy_player_session_path
+    - else
+      = navbar_item 'Register', new_player_registration_path
+      = navbar_item 'Login', new_player_session_path
