@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-describe Card do
-  it { is_expected.to respond_to(:text) }
-  it { should validate_uniqueness_of(:text) }
+RSpec.describe Card, type: :model do
+  it { is_expected.to validate_uniqueness_of(:text) }
+  it { is_expected.to validate_inclusion_of(:type).in_array(Card::TYPES.values) }
+  it { is_expected.to validate_inclusion_of(:text_type).in_array(Card::TEXT_TYPES.values) }
 end
