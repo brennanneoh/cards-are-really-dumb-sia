@@ -6,6 +6,7 @@ class CreateScores < ActiveRecord::Migration[5.0]
       t.integer :points
       t.timestamps
     end
+
     execute "ALTER TABLE scores ADD PRIMARY KEY (game_id, player_id);"
 
     add_foreign_key :scores, :games
