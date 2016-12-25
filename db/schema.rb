@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224162232) do
+ActiveRecord::Schema.define(version: 20161225074927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
     t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,4 +45,24 @@ ActiveRecord::Schema.define(version: 20161224162232) do
     t.index ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "game_id",    null: false
+    t.integer  "card_czar",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scores", primary_key: ["game_id", "player_id"], force: :cascade do |t|
+    t.integer  "game_id",    null: false
+    t.integer  "player_id",  null: false
+    t.integer  "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id", "player_id"], name: "index_scores_on_game_id_and_player_id", unique: true, using: :btree
+  end
+
+  add_foreign_key "rounds", "games"
+  add_foreign_key "rounds", "players", column: "card_czar"
+  add_foreign_key "scores", "games"
+  add_foreign_key "scores", "players"
 end
