@@ -1,5 +1,6 @@
 require 'rails_helper'
 
-describe Card::White do
-  it { is_expected.to respond_to(:answer) }
+RSpec.describe Card::White, type: :model do
+  it { is_expected.to validate_inclusion_of(:type).in_array [ Card::TYPES[:white] ] }
+  it { is_expected.to validate_inclusion_of(:text_type).in_array(Card::White::TEXT_TYPES.values) }
 end
