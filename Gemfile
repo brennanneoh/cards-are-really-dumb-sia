@@ -25,8 +25,8 @@ end
 group :development, :test do
   gem 'byebug'
   gem "factory_girl_rails", "~> 4.0"
-  gem 'rspec-rails', '~> 3.5'
   gem 'jasmine-rails'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
