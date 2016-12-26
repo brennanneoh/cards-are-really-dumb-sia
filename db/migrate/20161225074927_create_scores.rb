@@ -7,7 +7,14 @@ class CreateScores < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    execute "ALTER TABLE scores ADD PRIMARY KEY (game_id, player_id);"
+    reversible do |dir|
+      dir.up do
+        execute "ALTER TABLE scores ADD PRIMARY KEY (game_id, player_id);"
+      end
+      dir.down do
+        execute "ALTER TABLE scores DROP CONSTRAINT scores_pkey"
+      end
+    end
 
     add_foreign_key :scores, :games
     add_foreign_key :scores, :players
