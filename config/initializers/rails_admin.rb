@@ -26,6 +26,7 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new
+    import
     export
     bulk_delete
     show

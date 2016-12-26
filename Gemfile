@@ -20,6 +20,7 @@ gem 'rails_bootstrap_navbar'
 gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: 'rails5'
 gem 'client_side_validations-simple_form', github: 'DavyJonesLocker/client_side_validations-simple_form', branch: 'rails5'
 gem 'rails_admin'
+gem 'rails_admin_import'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
