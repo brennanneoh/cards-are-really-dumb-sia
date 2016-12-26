@@ -7,6 +7,7 @@ class Game < ApplicationRecord
   attr_accessor :game_player_ids
 
   after_create :add_players_to_scores
+  after_create :start_first_round
 
   private
 
@@ -15,5 +16,9 @@ class Game < ApplicationRecord
       score = Score.new game_id: self.id, player_id: pid
       score.save!
     end
+  end
+
+  def start_first_round
+    Round.create game_id: self.id, card_czar_id: current_user.id
   end
 end
