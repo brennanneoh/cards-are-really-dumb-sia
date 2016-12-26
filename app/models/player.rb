@@ -1,4 +1,6 @@
 class Player < ApplicationRecord
+  include PlayerAdmin
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
