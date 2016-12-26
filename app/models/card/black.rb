@@ -8,9 +8,13 @@ class Card::Black < Card
     fill_in_the_blanks: 'fill_in_the_blanks'
   }
 
-  validates :type, inclusion: { in: [ TYPES[:black] ] }
-  validates :text_type, inclusion: { in: TEXT_TYPES.values }
+  validates :type, presence: true, inclusion: { in: [ TYPES[:black] ] }
+  validates :text_type, presence: true, inclusion: { in: TEXT_TYPES.values }
   validates :blanks, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, if: :is_fill_in_the_blanks?
+
+  def text_type_enum
+    TEXT_TYPES.values
+  end
 
   private
 

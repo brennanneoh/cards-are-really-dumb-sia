@@ -9,4 +9,8 @@ class Card::White < Card
 
   validates :type, inclusion: { in: [ TYPES[:white] ] }
   validates :text_type, inclusion: { in: TEXT_TYPES.values }
+
+  def text_type_enum
+    TEXT_TYPES.values
+  end
 end

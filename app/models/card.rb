@@ -16,10 +16,8 @@ class Card < ApplicationRecord
 
   validates :stack, presence: true
   validates :text, presence: true, uniqueness: true
-  validates :type, inclusion: { in: TYPES.values }
-  validates :text_type, inclusion: { in: TEXT_TYPES.values }
-
-  private
+  validates :type, presence: true, inclusion: { in: TYPES.values }
+  validates :text_type, presence: true, inclusion: { in: TEXT_TYPES.values }
 
   def type_enum
     TYPES.values
