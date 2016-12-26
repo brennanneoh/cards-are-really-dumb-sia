@@ -1,4 +1,6 @@
 class Card::Black < Card
+  include Card::BlackAdmin
+
   default_scope { where type: Card::TYPES[:black] }
 
   TEXT_TYPES = {
