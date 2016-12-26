@@ -94,6 +94,8 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
+    faker (1.7.1)
+      i18n (~> 0.5)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
     gem_config (0.3.1)
@@ -282,6 +284,7 @@ DEPENDENCIES
   composite_primary_keys
   devise
   factory_girl_rails (~> 4.0)
+  faker
   haml-rails
   jasmine-rails
   jbuilder (~> 2.0)
