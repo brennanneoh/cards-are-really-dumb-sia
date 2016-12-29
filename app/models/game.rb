@@ -22,6 +22,6 @@ class Game < ApplicationRecord
   end
 
   def start_first_round
-    Round.create game_id: self.id, card_czar: first_card_czar
+    Round.create game_id: self.id, card_czar: first_card_czar, black_card: Card::Black.pick_one
   end
 end

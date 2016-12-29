@@ -1,17 +1,20 @@
 class Round < ApplicationRecord
+  ROUND_LIMIT_PER_GAME = 10
+
   belongs_to :game
   belongs_to :card_czar, class_name: Player
   belongs_to :black_card, class_name: Card::Black
 
   has_many :hands
 
-  before_create :pick_black_card
+  validate :ensure_within_round_limit
+
   after_create :assign_hands_to_players
 
   private
 
-  def pick_black_card
-    self.black_card = Card::Black.pick_one
+  def ensure_within_round_limit
+    errors.add(:game, "has reached the round limit") if game.rounds.count == ROUND_LIMIT_PER_GAME
   end
 
   def assign_hands_to_players

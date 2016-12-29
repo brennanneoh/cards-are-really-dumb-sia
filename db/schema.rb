@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229130215) do
+ActiveRecord::Schema.define(version: 20161229171811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20161229130215) do
     t.index ["game_id", "stack_id"], name: "index_games_stacks_on_game_id_and_stack_id", unique: true, using: :btree
   end
 
-  create_table "hands", primary_key: ["round_id", "player_id"], force: :cascade do |t|
+  create_table "hands", force: :cascade do |t|
     t.integer  "round_id",                      null: false
     t.integer  "player_id",                     null: false
     t.integer  "white_card_id",                 null: false
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20161229130215) do
     t.boolean  "czar_pick",     default: false, null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["round_id", "player_id"], name: "index_hands_on_round_id_and_player_id", unique: true, using: :btree
   end
 
   create_table "players", force: :cascade do |t|

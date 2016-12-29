@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Round, type: :model do
-  let!(:black_cards) { create_list :card, 3, :black }
-
   it { is_expected.to belong_to :game }
   it { is_expected.to belong_to(:card_czar).class_name(Player) }
   it { is_expected.to belong_to(:black_card).class_name(Card::Black) }
 
-  describe "before create" do
-    let(:round) { build :round }
+  describe "when game has reached the round limit" do
+    let(:rounds)      { create_list :round, Round::ROUND_LIMIT_PER_GAME }
+    let(:game)        { create :game, rounds: rounds }
+    let(:extra_round) { build :round, game: game }
 
-    it "will pick a black card" do
-      round.save
-      expect(round.black_card).not_to be_nil
+    it "raises a round limit error" do
+      extra_round.valid?
+      expect(extra_round.errors.full_messages).to include("Game has reached the round limit")
     end
   end
 

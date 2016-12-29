@@ -9,6 +9,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new game_params
+    @game.first_card_czar = current_user
     if @game.save
       redirect_to games_path(@game)
     else

@@ -10,7 +10,6 @@ RSpec.describe Game, type: :model do
   it { is_expected.to validate_presence_of(:first_card_czar).on(:create) }
 
   describe "after create" do
-    let!(:black_cards) { create_list :card, 3, :black }
     let(:players) { create_list :player, 3 }
     let(:first_card_czar) { players[0] }
     let(:game) { build :game, game_player_ids: players.map(&:id), first_card_czar: first_card_czar }
