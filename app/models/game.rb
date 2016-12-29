@@ -10,10 +10,13 @@ class Game < ApplicationRecord
   after_create :add_players_to_scores
   after_create :start_first_round
 
+  validates :game_player_ids, presence: true, on: :create
+  validates :first_card_czar, presence: true, on: :create
+
   private
 
   def add_players_to_scores
-    self.game_player_ids.reject { |id| id == '' }.each do |pid|
+    self.game_player_ids.reject { |player_id| player_id == '' }.each do |pid|
       Score.create game_id: self.id, player_id: pid
     end
   end
