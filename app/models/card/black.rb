@@ -13,7 +13,7 @@ class Card::Black < Card
   validates :blanks, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, if: :is_fill_in_the_blanks?
 
   def self.pick_one
-    order("RANDOM()").limit(1)
+    order("RANDOM()").limit(1).first
   end
 
   def text_type_enum

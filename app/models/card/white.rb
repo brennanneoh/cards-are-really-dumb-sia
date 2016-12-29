@@ -10,6 +10,10 @@ class Card::White < Card
   validates :card_type, inclusion: { in: [ TYPES[:white] ] }
   validates :text_type, inclusion: { in: TEXT_TYPES.values }
 
+  def self.pick_one
+    order("RANDOM()").limit(1).first
+  end
+
   def before_import_save record
     self.card_type = TYPES[:white]
     self.text_type = TEXT_TYPES[:answer]

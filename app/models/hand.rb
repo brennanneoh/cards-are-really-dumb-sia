@@ -3,5 +3,5 @@ class Hand < ApplicationRecord
 
   belongs_to :round
   belongs_to :player
-  belongs_to :card
+  belongs_to :white_card, class_name: Card::White
 end
