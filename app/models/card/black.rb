@@ -12,6 +12,10 @@ class Card::Black < Card
   validates :text_type, presence: true, inclusion: { in: TEXT_TYPES.values }
   validates :blanks, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, if: :is_fill_in_the_blanks?
 
+  def self.pick_one
+    order("RANDOM()").limit(1)
+  end
+
   def text_type_enum
     TEXT_TYPES.values
   end

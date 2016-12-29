@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226101206) do
+ActiveRecord::Schema.define(version: 20161229130215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 20161226101206) do
   end
 
   create_table "hands", primary_key: ["round_id", "player_id"], force: :cascade do |t|
-    t.integer  "round_id",    null: false
-    t.integer  "player_id",   null: false
-    t.integer  "card_id",     null: false
-    t.boolean  "player_pick", null: false
-    t.boolean  "tzar_pick",   null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "round_id",                      null: false
+    t.integer  "player_id",                     null: false
+    t.integer  "white_card_id",                 null: false
+    t.boolean  "player_pick",   default: false, null: false
+    t.boolean  "czar_pick",     default: false, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["round_id", "player_id"], name: "index_hands_on_round_id_and_player_id", unique: true, using: :btree
   end
 
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20161226101206) do
   add_foreign_key "cards", "stacks"
   add_foreign_key "games_stacks", "games"
   add_foreign_key "games_stacks", "stacks"
-  add_foreign_key "hands", "cards"
+  add_foreign_key "hands", "cards", column: "white_card_id"
   add_foreign_key "hands", "players"
   add_foreign_key "hands", "rounds"
   add_foreign_key "rounds", "cards", column: "black_card_id"
