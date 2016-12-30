@@ -160,6 +160,7 @@ GEM
     orm_adapter (0.5.0)
     pg (0.19.0)
     public_suffix (2.0.4)
+    puma (3.6.2)
     rack (2.0.1)
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
@@ -311,6 +312,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
+  puma
   rails
   rails-assets-tether (>= 1.1.0)!
   rails_admin
