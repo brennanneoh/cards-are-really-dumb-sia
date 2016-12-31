@@ -3,24 +3,20 @@ class Card::White < Card
 
   default_scope { where card_type: Card::TYPES[:white] }
 
-  TEXT_TYPES = {
-    answer: 'answer'
-  }
-
-  validates :card_type, inclusion: { in: [ TYPES[:white] ] }
-  validates :text_type, inclusion: { in: TEXT_TYPES.values }
+  validates :card_type, inclusion: { in: [ Card::TYPES[:white] ] }
+  validates :text_type, inclusion: { in: [ Card::TEXT_TYPES[:answer] ] }
 
   def self.pick_one
     order("RANDOM()").limit(1).first
   end
 
   def before_import_save record
-    self.card_type = TYPES[:white]
-    self.text_type = TEXT_TYPES[:answer]
+    self.card_type = Card::TYPES[:white]
+    self.text_type = Card::TEXT_TYPES[:answer]
     self.stack = Stack.where(name: "Cards Against Humanity").first
   end
 
   def text_type_enum
-    TEXT_TYPES.values
+    [ Card::TEXT_TYPES[:answer] ]
   end
 end

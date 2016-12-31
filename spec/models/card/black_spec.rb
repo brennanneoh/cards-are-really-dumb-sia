@@ -1,19 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Card::Black do
-  subject { Card::Black.new }
-  it { is_expected.to validate_inclusion_of(:type).in_array [ Card::TYPES[:black] ] }
-  it { is_expected.to validate_inclusion_of(:text_type).in_array(Card::Black::TEXT_TYPES.values) }
+  it { is_expected.to validate_inclusion_of(:card_type).in_array [ Card::TYPES[:black] ] }
+  it { is_expected.to validate_inclusion_of(:text_type).in_array Card::Black::TEXT_TYPES }
+  it { is_expected.to validate_presence_of(:blanks) }
+  it { is_expected.to validate_numericality_of(:blanks).only_integer.is_greater_than_or_equal_to(1) }
 
-  describe "when text_type is `#{Card::Black::TEXT_TYPES[:fill_in_the_blanks]}`" do
-    before { allow(subject).to receive(:is_fill_in_the_blanks?).and_return true }
-    it { is_expected.to validate_presence_of(:blanks) }
-    it { is_expected.to validate_numericality_of(:blanks).is_greater_than_or_equal_to(1).only_integer }
-  end
+  describe "count and record blanks" do
+    let(:blanks_card) { build :fill_in_the_blanks_card, text: '_ _' }
+    let(:question_card) { build :question_card, text: '_ _' }
 
-  describe "when text_type is not `#{Card::Black::TEXT_TYPES[:fill_in_the_blanks]}`" do
-    before { allow(subject).to receive(:is_fill_in_the_blanks?).and_return false }
-    it { is_expected.not_to validate_presence_of(:blanks) }
-    it { is_expected.not_to validate_numericality_of(:blanks).is_greater_than_or_equal_to(1).only_integer }
+    it "should record the number of blanks in a fill in the blanks card" do
+      blanks_card.save
+      expect(blanks_card.blanks).to eq 2
+    end
+
+    it "should not count and record blanks for a question card" do
+      question_card.save
+      expect(question_card.blanks).to eq 1
+    end
   end
 end
