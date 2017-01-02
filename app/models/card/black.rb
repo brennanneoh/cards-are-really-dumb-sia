@@ -10,6 +10,8 @@ class Card::Black < Card
     Card::TEXT_TYPES[:fill_in_the_blanks]
   ]
 
+  BLANK_LENGTH = 7
+
   validates :card_type, presence: true, inclusion: { in: [ CARD_TYPE ] }
   validates :text_type, presence: true, inclusion: { in: TEXT_TYPES }
   validates :blanks, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
@@ -17,7 +19,9 @@ class Card::Black < Card
   before_create :count_and_record_blanks, if: lambda { |card| card.text_type == Card::TEXT_TYPES[:fill_in_the_blanks] }
 
   def self.pick_one
-    order("RANDOM()").limit(1).first
+    card = order("RANDOM()").limit(1).first
+    card.text = card.text.gsub '_', ('_' * BLANK_LENGTH) if card.text_type == Card::TEXT_TYPES[:fill_in_the_blanks]
+    card
   end
 
   def text_type_enum
