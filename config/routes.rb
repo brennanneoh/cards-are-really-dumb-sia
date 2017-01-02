@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resource :welcome, only: [:index]
   resource :games, only: [:new, :create, :show]
 
+  get "suits/random"
+
   root 'welcome#index'
 end

@@ -1,4 +1,4 @@
-App.suit = App.cable.subscriptions.create('SuitChannel',
+App.suit = App.cable.subscriptions.create 'RandomSuitChannel',
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -6,5 +6,6 @@ App.suit = App.cable.subscriptions.create('SuitChannel',
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#suits').html(data) unless data.blank?
-)
+    unless data.blank?
+      $('#cards').html(data)
+      $('.card').fadeIn('slow').css('display', 'inline-block')

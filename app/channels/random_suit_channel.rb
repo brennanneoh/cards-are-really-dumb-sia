@@ -1,6 +1,6 @@
-class SuitChannel < ApplicationCable::Channel
+class RandomSuitChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "suit_channel"
+    stream_from "random_suit_channel"
   end
 
   def unsubscribed

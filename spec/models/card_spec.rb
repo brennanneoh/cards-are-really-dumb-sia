@@ -26,7 +26,6 @@ RSpec.describe Card, type: :model do
       let!(:black_card) { create :fill_in_the_blanks_card, text: '_ _' }
 
       it "will select multiple white cards for one question card" do
-        byebug
         expect(subject[:black_card]).to be_instance_of(Card::Black)
         expect(subject[:white_cards].count).to eq 2
       end

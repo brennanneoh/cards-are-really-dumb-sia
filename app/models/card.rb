@@ -21,11 +21,7 @@ class Card < ApplicationRecord
 
   def self.pick_random_suit
     black_card = Card::Black.pick_one
-    white_cards = []
-    1.upto(black_card.blanks) do
-      byebug
-      white_cards.push Card::White.pick_one
-    end
+    white_cards = Card::White.pick_random(black_card.blanks)
     { black_card: black_card, white_cards: white_cards }
   end
 

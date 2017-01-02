@@ -1,2 +1,10 @@
-- if @cards.any?
-  = render 'cards/card'
+.card-deck
+  - if black_card
+    .black.card.card-inverse.card-block
+      %h3.card-title
+        = black_card.text
+
+  - white_cards.each do |white_card|
+    .white.card.card-block
+      %h3.card-title
+        = white_card.text

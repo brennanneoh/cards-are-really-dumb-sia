@@ -6,6 +6,10 @@ class Card::White < Card
   validates :card_type, inclusion: { in: [ Card::TYPES[:white] ] }
   validates :text_type, inclusion: { in: [ Card::TEXT_TYPES[:answer] ] }
 
+  def self.pick_random count
+    order("RANDOM()").limit(count)
+  end
+
   def self.pick_one
     order("RANDOM()").limit(1).first
   end

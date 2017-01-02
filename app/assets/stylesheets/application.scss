@@ -4,3 +4,16 @@
  */
 
 @import "bootstrap";
+@import url("https://fonts.googleapis.com/css?family=Righteous");
+
+.navbar {
+  .navbar-brand {
+    font-family: 'Righteous', cursive;
+
+    #word-one   { color: #FEAEB7 }
+    #word-two   { color: #FFE0A4 }
+    #word-three { color: #C9FFB0 }
+    #word-four  { color: #CCDBFF }
+    #word-five  { color: #E9C5FF }
+  }
+}
