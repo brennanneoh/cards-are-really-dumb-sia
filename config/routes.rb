@@ -5,9 +5,11 @@ Rails.application.routes.draw do
 
   devise_for :players, controllers: { registrations: 'registrations' }
   resource :welcome, only: [:index]
-  resource :games, only: [:new, :create, :show]
+  resources :games, only: [:index, :new, :create, :show]
 
-  get "suits/random"
+  get 'suits/random'
+  post 'rounds/current'
+  post 'hands/current'
 
   root 'welcome#index'
 end

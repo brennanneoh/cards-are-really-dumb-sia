@@ -11,6 +11,10 @@ class Round < ApplicationRecord
 
   after_create :assign_hands_to_players
 
+  def self.current_for game_id
+    where(game_id: game_id).order(created_at: :desc).limit(1).first
+  end
+
   private
 
   def ensure_within_round_limit

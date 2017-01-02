@@ -1,0 +1,10 @@
+.card-deck
+  .black.card.card-inverse.card-block
+    %h3.card-title= @round.black_card.text
+  - 1.upto(@round.black_card.blanks) do |count|
+    .white.card.card-block
+      = "Card #{count}"
+%p
+  Card Czar:
+  = @round.card_czar.name
+

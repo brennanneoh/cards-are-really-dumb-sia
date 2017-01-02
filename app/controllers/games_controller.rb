@@ -1,6 +1,10 @@
 class GamesController < ApplicationController
   before_action :authenticate_player!
 
+  def index
+    @current_games = Game.joins(:players).where players: { id: [ current_player.id ] }
+  end
+
   def new
     @players = Player.all
     @stacks = Stack.all
@@ -19,6 +23,8 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find params[:id]
+    @round = @game.current_round()
+    @hands = Hand.current_for @round.id, current_player.id
   end
 
   private

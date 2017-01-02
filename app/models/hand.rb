@@ -9,6 +9,10 @@ class Hand < ApplicationRecord
 
   validate :ensure_within_hand_limit
 
+  def self.current_for round_id, player_id
+    joins(:white_card).where round_id: round_id, player_id: player_id
+  end
+
   private
 
   def ensure_within_hand_limit
