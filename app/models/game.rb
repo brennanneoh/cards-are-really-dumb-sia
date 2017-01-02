@@ -13,6 +13,10 @@ class Game < ApplicationRecord
   validates :game_player_ids, presence: true, on: :create
   validates :first_card_czar, presence: true, on: :create
 
+  def round_number
+    rounds.count
+  end
+
   def current_round
     rounds.order(created_at: :desc).limit(1).first
   end

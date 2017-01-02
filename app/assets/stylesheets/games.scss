@@ -1,20 +1,9 @@
-.card {
-  width: 2.5in;
-  height: 4in;
-  border-radius: .25in;
-}
+#hands {
+  .card {
+    cursor: pointer;
+  }
 
-.dark {
-  border: 3px solid black;
-  color: white;
-  background: black;
-}
-
-.text{
-  font-family: Helvetica,sans-serif;
-  font-weight: bolder;
-  font-size: 26px;
-  padding-left:7%;
-  padding-right:7%;
-  word-wrap: break-word;
+  .selected {
+    border: 2px solid black;
+  }
 }

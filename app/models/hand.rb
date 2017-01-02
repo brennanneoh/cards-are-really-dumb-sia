@@ -1,6 +1,4 @@
 class Hand < ApplicationRecord
-  self.primary_keys = :round_id, :player_id
-
   HAND_LIMIT_PER_PLAYER = 10
 
   belongs_to :round
@@ -11,6 +9,18 @@ class Hand < ApplicationRecord
 
   def self.current_for round_id, player_id
     joins(:white_card).where round_id: round_id, player_id: player_id
+  end
+
+  def self.picks_for round_id
+    where round_id: round_id, player_pick: true
+  end
+
+  def reset_player_pick current_player_id
+    hands = Hand.where round_id: self.round.id, player_id: current_player_id
+    hands.each do |hand|
+      hand.player_pick = false
+      hand.save!
+    end
   end
 
   private

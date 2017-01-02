@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   resources :games, only: [:index, :new, :create, :show]
 
   get 'suits/random'
-  post 'rounds/current'
-  post 'hands/current'
+  post 'hands/select'
 
   root 'welcome#index'
 end

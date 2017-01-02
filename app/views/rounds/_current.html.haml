@@ -4,7 +4,4 @@
   - 1.upto(@round.black_card.blanks) do |count|
     .white.card.card-block
       = "Card #{count}"
-%p
-  Card Czar:
-  = @round.card_czar.name
-
+  %span#picks{ data: { game_id: @game.id } }

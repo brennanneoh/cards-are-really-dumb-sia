@@ -1,4 +1,4 @@
 .card-deck
   - @hands.each do |hand|
-    .white.card.card-block
+    .white.card.card-block{ data: { id: hand.id } }
       %h3.card-title= hand.white_card.text

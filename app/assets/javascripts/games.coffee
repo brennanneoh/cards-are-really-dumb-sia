@@ -1,2 +1,6 @@
 $(document).on 'show_games.load', (event) ->
-      $('#current-round .card').fadeIn('slow').css('display', 'inline-block')
+  App.pick $('#picks').data('game-id')
+  $(document).on 'click', '#hands .card', () ->
+    $('#hands .card').removeClass('selected')
+    $.post '/hands/select', { id: $(@).data('id') }, (data) =>
+      $(@).addClass('selected')

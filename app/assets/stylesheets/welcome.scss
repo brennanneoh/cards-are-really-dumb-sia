@@ -2,7 +2,13 @@
   font-size: 2em;
 }
 
-#cards, #current-round {
+#cards {
+  .card {
+    display: none;
+  }
+}
+
+#cards, #round, #hands {
   margin: 2em auto;
 
   .card-deck {
@@ -11,10 +17,15 @@
   }
 
   .card {
-    display: none;
     width: 15rem;
     height: 18rem;
     margin: 0 1em;
+  }
+
+  .card {
+    .card-text {
+      word-wrap: break-word;
+    }
   }
 
   .black {
