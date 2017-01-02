@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/DavyJonesLocker/client_side_validations.git
-  revision: d943787dc53cdc1dd98fd23adcca3cc07fb5905a
+  revision: fe23ff15e115e7fe2e1ee07c129608e6468c7b24
   branch: rails5
   specs:
     client_side_validations (5.0.0)
@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: c30469e423f8010eed3a5fcc91bfd5a4957ddaef
+  revision: 4d9c591a91c353edc1aaed8fda6a5f702529b7e1
   branch: 5-0-stable
   specs:
     actioncable (5.0.1)
@@ -312,7 +312,7 @@ DEPENDENCIES
   composite_primary_keys
   database_cleaner
   devise
-  factory_girl_rails (~> 4.0)
+  factory_girl_rails
   faker
   haml-rails
   jbuilder (~> 2.0)
@@ -324,7 +324,7 @@ DEPENDENCIES
   rails_admin
   rails_admin_import
   rails_bootstrap_navbar
-  rspec-rails (~> 3.5)
+  rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda-matchers (~> 3.1)
